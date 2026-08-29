@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* تم تاریک فیروزه‌ای (Teal & Slate) شیفت شب */
+    --bg-primary: #090d16;
+    --bg-secondary: #111827;
+    --bg-card: rgba(17, 24, 39, 0.88);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-primary: #0ea5e9;
+    --accent-teal: #00a896;
+    --accent-emerald: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-crimson: #ef4444;
+  }
+
+  /* تم طراحی رابط کاربری شیک (Sleek Interface) */
+  html[data-theme="sleek"],
+  html[data-theme="light"] {
+    --bg-primary: #f7f9ff;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --border-color: rgba(26, 28, 30, 0.12);
+    --text-primary: #1a1c1e;
+    --text-secondary: #44474e;
+    --accent-primary: #0061a4;
+    --accent-teal: #00a896;
+    --accent-emerald: #00875a;
+    --accent-amber: #b25e00;
+    --accent-crimson: #ba1a1a;
+  }
+
+  body {
+    font-family: "Vazirmatn", sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    direction: rtl;
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  .font-mono-num {
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* استایل گوشه‌های گرد استاندارد ۲۴dp مطابق تم Sleek Interface */
+.sleek-card {
+  border-radius: 24px;
+  box-shadow: 0 4px 20px -2px rgba(0, 97, 164, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+/* استایل بدنه فریم شبیه‌ساز گوشی اندروید (Samsung Galaxy / Google Pixel Mockup) */
+.android-phone-frame {
+  border-radius: 46px;
+  box-shadow: 0 25px 70px -10px rgba(0, 0, 0, 0.5), 0 0 0 12px #1e2430, 0 0 0 14px #333c4d;
+  position: relative;
+}
+
+/* پانچ‌هول دوربین سلفی گوشی اندروید */
+.android-camera-punchhole {
+  width: 12px;
+  height: 12px;
+  background-color: #0c0f14;
+  border: 2px solid #232a36;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+/* افکت خط اسکن لیزری برای بارکدخوان QR */
+@keyframes laser-sweep {
+  0% {
+    top: 6%;
+    opacity: 0.85;
+  }
+  50% {
+    top: 92%;
+    opacity: 1;
+  }
+  100% {
+    top: 6%;
+    opacity: 0.85;
+  }
+}
+
+.laser-scanner-line {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #0061a4 25%,
+    #00a896 50%,
+    #0061a4 75%,
+    transparent 100%
+  );
+  box-shadow: 0 0 16px rgba(0, 168, 150, 0.9);
+  animation: laser-sweep 2.4s ease-in-out infinite;
+}
+
+/* افکت نور قرمز اضطراری برای کدهای قرمز و سفید */
+@keyframes red-beacon {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(186, 26, 26, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(186, 26, 26, 0);
+  }
+}
+
+.beacon-pulse-red {
+  animation: red-beacon 1.8s infinite;
+}
+
+/* افکت پالس سبز برای گشت‌های تاییدشده */
+@keyframes green-beacon {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 135, 90, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 135, 90, 0);
+  }
+}
+
+.beacon-pulse-green {
+  animation: green-beacon 2s infinite;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0061a4;
+}
